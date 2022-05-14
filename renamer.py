@@ -1,8 +1,11 @@
+#! Python 3
+#! renamer.py - a program to rename all files in a directory, compress them into a zip file based on the parent folder name, and delete the loose files. Copy the directory to your clipboard or enter it in the console when prompted. 
+
 from pathlib import Path
 import logging, os, zipfile, pyperclip
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-# logging.disable(logging.CRITICAL)
+logging.disable(logging.CRITICAL)
 
 if Path(pyperclip.paste()).is_dir():
         folderPath = Path(pyperclip.paste())
@@ -44,4 +47,3 @@ with zipfile.ZipFile(zipFileName, 'w') as zip:
             zip.write(file, compress_type=zipfile.ZIP_DEFLATED)
             logging.debug(f'{file} was added to {zipFileName}.zip')
             os.remove(file)
-            
