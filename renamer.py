@@ -11,16 +11,16 @@ logging.disable(logging.CRITICAL)
 
 # Set the current working directory.
 input("Copy the path you would like to organize to your clipboard and press Enter.")
-try:
+folderPath = ""
+while Path.cwd() != folderPath:
     folderPath = Path(pyperclip.paste())
-except:
-    while not folderPath.is_dir:
+    try:
+        os.chdir(folderPath)
+    except:
         print(f"{folderPath} is not a valid path.")
         input(
             "Copy the path you would like to organize to your clipboard and press Enter."
         )
-        folderPath = Path(pyperclip.paste())
-os.chdir(folderPath)
 assert Path.cwd() == folderPath
 
 # Configure file names.
