@@ -41,7 +41,7 @@ for file in os.listdir():
 
 # Rename the files.
 skipFiles = [Path(file) for file in os.listdir() if parentDir in file]
-fileNum = len(skipFiles) + 1
+fileNum = 1
 for file in os.listdir():
     file = Path(file)
     newFilename = f"{parentDir} {fileNum}{file.suffix}"
